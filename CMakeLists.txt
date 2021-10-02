@@ -3,7 +3,7 @@ project(computer_graphic)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(computer_graphic line.cpp)
+add_executable(computer_graphic homework_1/line.cpp)
 
 find_package(SFML 2.5.1 COMPONENTS graphics REQUIRED)
 
