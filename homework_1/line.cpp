@@ -8,8 +8,10 @@ void PrintBresenhamLine(sf::Vector2<int>& firstPoint,
                    sf::Vector2<int>& secondPoint,
                    const float sizePoint = 10.f,
                    sf::RenderWindow* window = nullptr) noexcept {
-    bool steep = std::abs(secondPoint.y - firstPoint.y) > std::abs(secondPoint.x - firstPoint.x);
     window->clear();
+
+    bool steep = std::abs(secondPoint.y - firstPoint.y) > std::abs(secondPoint.x - firstPoint.x);
+
     if (steep) {
         std::swap(firstPoint.x, firstPoint.y);
         std::swap(secondPoint.x, secondPoint.y);
@@ -29,9 +31,8 @@ void PrintBresenhamLine(sf::Vector2<int>& firstPoint,
     sf::RectangleShape point;
     point.setFillColor(sf::Color::White);
     point.setSize(sf::Vector2f(sizePoint, sizePoint));
-    int i = 0;
 
-    for (auto x = firstPoint.x; x <= secondPoint.x; x += sizePoint, i++) {
+    for (auto x = firstPoint.x; x <= secondPoint.x; x += sizePoint) {
         point.setPosition(steep ? y : x, steep ? x : y);
         window->draw(point);
         error -= dy;
@@ -47,6 +48,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Bresenham Line");
     window.setFramerateLimit(60);
     window.display();
+
     bool isClickMouse = false;
 
     sf::Vector2<int> point1;
