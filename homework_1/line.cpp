@@ -1,13 +1,21 @@
 #include <cmath>
-#include <vector>
+#include <stdexcept>
 
 #include <SFML/Graphics.hpp>
 
 
-void PrintBresenhamLine(sf::Vector2<int>& firstPoint,
+void ShowBresenhamLine(sf::Vector2<int>& firstPoint,
                    sf::Vector2<int>& secondPoint,
                    const float sizePoint = 10.f,
-                   sf::RenderWindow* window = nullptr) noexcept {
+                   sf::RenderWindow* window = nullptr) {
+    if (sizePoint <= 0) {
+        throw std::invalid_argument("invalid argument: size point");
+    }
+
+    if (!window->isOpen()) {
+        throw std::invalid_argument("invalid argument: window is not opened");
+    }
+
     window->clear();
 
     bool steep = std::abs(secondPoint.y - firstPoint.y) > std::abs(secondPoint.x - firstPoint.x);
@@ -67,7 +75,7 @@ int main() {
                     isClickMouse = true;
                 } else {
                     point2 = sf::Mouse::getPosition(window);
-                    PrintBresenhamLine(point1, point2, 10, &window);
+                    ShowBresenhamLine(point1, point2, 10, &window);
                     isClickMouse = false;
                 }
             }
