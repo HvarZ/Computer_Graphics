@@ -26,8 +26,13 @@ auto CreateLine(const std::array<sf::Vector2f, 2>& vertices) noexcept -> sf::Rec
                                        std::pow(vertices[1].x - vertices[0].x, 2)),
                                     10));
     line.setPosition(vertices[0].x, vertices[0].y);
-    line.setRotation((180 / static_cast<float>(M_PI)) * std::atan((vertices[1].y - vertices[0].y) / (vertices[1].x - vertices[0].x)));
-
+    if (vertices[0].x < vertices[1].x) {
+        line.setRotation((180 / static_cast<float>(M_PI)) *
+                         std::atan((vertices[1].y - vertices[0].y) / (vertices[1].x - vertices[0].x)));
+    } else {
+        line.setRotation(180 + (180 / static_cast<float>(M_PI)) *
+                         std::atan((vertices[1].y - vertices[0].y) / (vertices[1].x - vertices[0].x)));
+    }
     return line;
 }
 
@@ -39,6 +44,7 @@ auto Dot(const sf::Vector2i& point0, const sf::Vector2i& point1) noexcept -> int
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Cyrus Beck algorithm");
+    window.setFramerateLimit(60);
     sf::ConvexShape convexShape;
     sf::RectangleShape line;
 
