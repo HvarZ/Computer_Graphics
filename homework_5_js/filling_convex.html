@@ -18,7 +18,7 @@
         let SignA = A / Math.abs(A);
         let SignB = B / Math.abs(B);
         if (Math.abs(A) < Math.abs(B)) {
-            let k = 2*A;
+            let k = 2 * A;
             for (x = x0; x !== x1; x += SignB){
                 ctx.fillRect(x, y, 1, 1);
                 eps = eps + k;
@@ -40,7 +40,7 @@
         }
     }
 
-    function fillPolygon(ctx, points) {
+    function fill_polygon(ctx, points) {
         let maxy = points[0].y, miny = points[0].y;
         for (let i = 1; i < points.length; i++) {
             if (points[i].y > maxy)
@@ -49,7 +49,6 @@
                 miny = points[i].y;
         }
 
-        console.log(maxy, miny);
         let arrY = [];
         for (let i = 0; i < points.length; ++i) {
             let hi = 0, lo = 0;
@@ -103,8 +102,7 @@
     });
 
     canvas.addEventListener("contextmenu", function () {
-        console.log("contextmenu");
-        fillPolygon(ctx, points);
+        fill_polygon(ctx, points);
         point_index = 0;
         points = [];
     });
