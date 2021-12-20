@@ -24,3 +24,13 @@
    ![result_3.1](results/result_3.1.png)
    ![result_3.2](results/result_3.2.png)  
    
+4. Кривая Безье второго порядка
+   Для сборки необходима библиотека pygame.
+   Ее можно поставить следующей командой 
+   <code>
+   pip install pygame
+   </code>
+   Результат работы программы
+   ![result_4](results/result_4.png)  
+   
+   
