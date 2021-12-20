@@ -14,3 +14,13 @@
    (Сборка аналогична сборке первой лабораторной работы)
    Результат работы программы:
    ![result_2](results/result_2.png)
+3. Фильтр (оператор) Собеля.  
+   Для сборки необходима библиотека PIL.
+   Ее можно поставить следующей командой
+   <code>
+   brew install libtiff libjpeg webp littlecms / pip install Pillow
+   </code>  
+   Результат работы программы
+   ![result_3.1](results/result_3.1.png)
+   ![result_3.2](results/result_3.2.png)  
+   
